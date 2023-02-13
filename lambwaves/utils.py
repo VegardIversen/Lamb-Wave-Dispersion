@@ -184,7 +184,7 @@ def write_txt(data_sym, data_antisym, kind, filename, header):
     
     # Write the results in a txt file.
     
-    with open('results/' + kind + ' - ' + filename, 'w') as f:
+    with open('results/' + kind + '-' + filename, 'w') as f:
         f.write(header)
         
         f.write('\t\t\t\t'.join(data_sym.keys()) + '\t\t\t\t')

@@ -520,7 +520,7 @@ class Lamb:
         # Generate the quiver plot animation.
 
         fig, ax = plt.subplots(figsize=(8, 5))
-        fig.canvas.set_window_title(f'Displacement Field (mode {mode})')
+        fig.canvas.manager.set_window_title(f'Displacement Field (mode {mode})')
         
         quiver = ax.quiver(x, y, u, w, scale=5*max_disp, scale_units='inches')
         
@@ -646,7 +646,7 @@ class Lamb:
         """
         
         fig, ax = plt.subplots(figsize=(7, 4))
-        fig.canvas.set_window_title('Phase Velocity')
+        fig.canvas.manager.set_window_title('Phase Velocity')
         
         # Calculate the maximum value to scale the ylim of the axes.
         
@@ -672,8 +672,8 @@ class Lamb:
         ax.set_ylabel('Phase Velocity [m/s]')
         
         if save_img:
-            fig.savefig(f'results/Phase Velocity - {self.d*1e3} mm '
-                        f'{self.material} plate.png', 
+            fig.savefig(f'results/Phase_Velocity-{self.d*1e3}_mm_'
+                        f'{self.material}_plate.png', 
                         bbox_inches='tight')
         
         return fig, ax
@@ -709,7 +709,7 @@ class Lamb:
         """
               
         fig, ax = plt.subplots(figsize=(7, 4))
-        fig.canvas.set_window_title('Group Velocity')
+        fig.canvas.manager.set_window_title('Group Velocity')
         
         # Calculate the maximum value to scale the ylim of the axes.
         
@@ -735,8 +735,8 @@ class Lamb:
         ax.set_ylabel('Group Velocity [m/s]')
         
         if save_img:
-            fig.savefig(f'results/Group Velocity - {self.d*1e3} mm '
-                        f'{self.material} plate.png', 
+            fig.savefig(f'results/Group_Velocity-{self.d*1e3}_mm_'
+                        f'{self.material}_plate.png', 
                         bbox_inches='tight')    
             
         return fig, ax
@@ -770,7 +770,7 @@ class Lamb:
         """
             
         fig, ax = plt.subplots(figsize=(7, 4))
-        fig.canvas.set_window_title('Wave Number')
+        fig.canvas.manager.set_window_title('Wave Number')
         
         # Calculate the maximum value to scale the ylim of the axes.
         
@@ -792,8 +792,8 @@ class Lamb:
         ax.set_ylabel('Wave Number [1/m]')
         
         if save_img:
-            fig.savefig(f'results/Wave Number - {self.d*1e3} mm '
-                        f'{self.material} plate.png',
+            fig.savefig(f'results/Wave_Number-{self.d*1e3}_mm_'
+                        f'{self.material}_plate.png',
                         bbox_inches='tight')
             
         return fig, ax
@@ -838,7 +838,7 @@ class Lamb:
         y = np.linspace(-self.h, self.h, 100) 
            
         fig, axs = plt.subplots(nrows=nrows, ncols=ncols)        
-        fig.canvas.set_window_title(f'Wave Structure (mode {mode})')
+        fig.canvas.manager.set_window_title(f'Wave Structure (mode {mode})')
         
         fig.suptitle('Mode $\mathregular{' + mode[0] + '_' + mode[1:] + '}$')
         
@@ -896,8 +896,8 @@ class Lamb:
         fig.legend(handles, labels, loc='lower center', ncol=2)  
 
         if save_img:
-            fig.savefig(f'results/Wave Structure - {self.d*1e3} mm '
-                        f'{self.material} plate - Mode {mode}.png',
+            fig.savefig(f'results/Wave_Structure-{self.d*1e3}_mm_'
+                        f'{self.material}_plate-Mode_{mode}.png',
                         bbox_inches='tight')
             
         return fig, axs
@@ -906,9 +906,9 @@ class Lamb:
         """Save all results to a txt file."""
         
         if self.material:
-            filename = f'{self.material} plate - {self.d*1e3} mm.txt'
+            filename = f'{self.material}_plate-{self.d*1e3}_mm.txt'
         else:
-            filename = f'{self.d*1e3} mm plate.txt'
+            filename = f'{self.d*1e3}_mm_plate.txt'
             
         header = (f'Material: {self.material}\n'
                   f'Thickness: {str(self.d*1e3)} mm\n'
