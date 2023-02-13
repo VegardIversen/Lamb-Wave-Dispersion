@@ -159,9 +159,9 @@ def write_txt(data_sym, data_antisym, kind, filename, header):
 
     """
     
-    if kind == 'Phase Velocity':
+    if kind == 'Phase_Velocity':
         label = 'vp [m/s]'
-    elif kind == 'Group Velocity':
+    elif kind == 'Group_Velocity':
         label = 'vg [m/s]'
     else:
         label = 'k  [1/m]'
