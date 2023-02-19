@@ -11,7 +11,7 @@ import itertools
 
 import numpy as np
 import scipy.interpolate
-
+import os
 def interpolate(result, d, kind='cubic'):
     """Interpolate the results for phase velocity, group velocity and
     wave number.
@@ -181,6 +181,10 @@ def write_txt(data_sym, data_antisym, kind, filename, header):
         y_vals = data_antisym[f'A{n}'](x_vals)
         results.append(np.around(x_vals, 1))
         results.append(np.around(y_vals, 1))
+    
+    # Create the directory if it doesn't exist.
+
+    os.makedirs(os.path.dirname('results/'), exist_ok=True)
     
     # Write the results in a txt file.
     

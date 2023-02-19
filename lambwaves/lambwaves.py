@@ -834,7 +834,11 @@ class Lamb:
             The figure and the axes of the generated plot.
         
         """
-        
+        if mode[0] == 'S' and int(mode[1:]) < self.nmodes_sym and (min(fd) < min(self.vp_sym[mode].x) or max(fd) > max(self.vp_sym[mode].x)):
+            raise ValueError(f"fd value {fd} is not in the acceptable range. Larger or less than vp_sym values.")
+        elif mode[0] == 'A' and int(mode[1:]) < self.nmodes_antisym and (min(fd) < min(self.vp_antisym[mode].x) or max(fd) > max(self.vp_antisym[mode].x)):
+            raise ValueError(f"fd value {fd} is not in the acceptable range. Larger or less than vp_antisym values.")
+
         y = np.linspace(-self.h, self.h, 100) 
            
         fig, axs = plt.subplots(nrows=nrows, ncols=ncols)        
